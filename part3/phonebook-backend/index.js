@@ -23,6 +23,18 @@ morgan.token('postData', (req) => {
 const morganTinyWithPostData = ':method :url :status :res[content-length] - :response-time ms:postData';
 app.use(morgan(morganTinyWithPostData));
 
+
+
+/**
+ * 3.11: serve frontend production build from backend root
+ */
+app.use(express.static('dist'));
+
+
+
+/**
+ * Phonebook backend is running....or not
+ */
 app.get('/', (req, res) => {
   res.type('text').send('Phonebook backend is running');
 });
